@@ -1,0 +1,9 @@
+safety_factor=0.2
+bandwidth=10000
+init_cwnd=10
+mss=1460
+mtu=1500
+size_per_round=13800
+reference_window=100
+rate_tolerance=0.2
+cancel_distance=25

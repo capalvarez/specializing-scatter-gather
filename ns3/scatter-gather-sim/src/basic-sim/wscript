@@ -1,0 +1,75 @@
+# -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+# def options(opt):
+#     pass
+
+# def configure(conf):
+#     conf.check_nonfatal(header_name='stdint.h', define_name='HAVE_STDINT_H')
+
+def build(bld):
+    module = bld.create_ns3_module('basic-sim', ['core', 'internet', 'applications', 'point-to-point'])
+    module.source = [
+        'model/flow-send-application.cc',
+        'model/schedule-reader.cc',
+        'model/simon-util.cc',
+        'model/topology.cc',
+        'model/incast-worker.cc',
+        'model/scheduled-worker.cc',
+        'model/worker.cc',
+        'model/frontend.cc',
+        'model/incast-frontend.cc',
+        'model/scheduled-frontend.cc',
+        'model/fixed-frontend.cc',
+
+        'model/incast-simulation.cc',
+        'model/batching-simulation.cc',
+        'model/scheduled-simulation.cc',
+        'model/scatter-gather-utils.cc',
+
+        'helper/flow-send-helper.cc',
+        'helper/incast-worker-helper.cc',
+        'helper/scheduled-worker-helper.cc',
+        ]
+
+    module_test = bld.create_ns3_module_test_library('basic-sim')
+    module_test.source = [
+        'test/basic-sim-test-suite.cc'
+        ]
+
+    headers = bld(features='ns3header')
+    headers.module = 'basic-sim'
+    headers.source = [
+        'model/flow-send-application.h',
+        'model/schedule-reader.h',
+        'model/simon-util.h',
+        'model/topology.h',
+        'model/socket-information.h',
+        'model/incast-timestamp.h',
+        'model/scheduled-event.h',
+        'model/scheduling-info.h',
+        'model/batch-info.h',
+        'model/incast-worker.h',
+        'model/scheduled-worker.h',
+        'model/worker.h',
+
+        'model/frontend.h',
+        'model/incast-frontend.h',
+        'model/scheduled-frontend.h',
+        'model/fixed-frontend.h',
+
+        'model/incast-simulation.h',
+        'model/batching-simulation.h',
+        'model/scheduled-simulation.h',
+        'model/scatter-gather-utils.h',
+        'model/simulator-config-info.h',
+
+        'helper/flow-send-helper.h',
+        'helper/incast-worker-helper.h',
+        'helper/scheduled-worker-helper.h',
+        ]
+
+    if bld.env.ENABLE_EXAMPLES:
+        bld.recurse('examples')
+
+    # bld.ns3_python_bindings()
+

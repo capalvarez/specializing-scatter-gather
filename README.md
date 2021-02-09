@@ -14,4 +14,4 @@ The FPGA sender implementation can be found on its own repository.
 - Catalina Alvarez - ETH Zürich
 - Zhenhao He - ETH Zürich
 - Gustavo Alonso - ETH Zürich
-- Ankit Singla - ETH Züric
+- Ankit Singla - ETH Zürich
